@@ -56,7 +56,7 @@ module.exports = {
         items: [
           {
             items: [
-              { text: 'Partners', link: '/community/partners/' },
+              { text: 'Partners', link: '/community/partners' },
               { text: 'Themes', link: '/community/themes/' },
               { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' }
             ]

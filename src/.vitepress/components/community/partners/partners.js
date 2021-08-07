@@ -87,11 +87,14 @@ export default [
         url: 'https://moduscreate.com/what-we-do/cloud-migration/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage'
       }
     ],
-    location: 'Reston, VA, USA / Los Angeles, CA, USA / Cluj, Romania / San José, Costa Rica',
+    location:
+      'Reston, VA, USA / Los Angeles, CA, USA / Cluj, Romania / San José, Costa Rica',
     languages: ['English', 'Global'],
     urlText: 'moduscreate.com',
-    urlLink: 'https://moduscreate.com/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage',
-    hireUrl: 'https://moduscreate.com/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage',
+    urlLink:
+      'https://moduscreate.com/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage',
+    hireUrl:
+      'https://moduscreate.com/?utm_source=Vue&utm_medium=Partner-Page&utm_campaign=Vue_partnerpage',
     email: 'contact@moduscreate.com',
     socialLinks: [
       {
@@ -142,13 +145,14 @@ export default [
       },
       {
         name: 'Projects',
-        url:  'https://www.monterail.com/projects?utm_medium=referral&utm_source=partner-list&utm_campaign=vue.js'
+        url: 'https://www.monterail.com/projects?utm_medium=referral&utm_source=partner-list&utm_campaign=vue.js'
       }
     ],
     location: 'Wrocław, Poland',
     languages: ['English', 'Polish'],
     urlText: 'www.monterail.com',
-    urlLink: 'https://www.monterail.com/services/vue-development?utm_campaign=Vue.js&utm_source=partner-list',
+    urlLink:
+      'https://www.monterail.com/services/vue-development?utm_campaign=Vue.js&utm_source=partner-list',
     hireUrl: 'https://www.monterail.com/contact',
     email: 'hello@monterail.com',
     socialLinks: [
@@ -203,11 +207,14 @@ export default [
         url: 'https://rangle.io/#transform-your-business/?utm_source=referral&utm_medium=partner&utm_campaign=vue-partners'
       }
     ],
-    location: 'Toronto, ON, CA / Atlanta, GA, USA / Amsterdam, Netherlands / Tokyo, Japan',
+    location:
+      'Toronto, ON, CA / Atlanta, GA, USA / Amsterdam, Netherlands / Tokyo, Japan',
     languages: ['English', 'French', 'Dutch'],
     urlText: 'rangle.io',
-    urlLink: 'https://rangle.io/?utm_source=referral&utm_medium=partner&utm_campaign=vue-partners',
-    hireUrl: 'https://rangle.io/contact-us/?utm_source=referral&utm_medium=partner&utm_campaign=vue-partners',
+    urlLink:
+      'https://rangle.io/?utm_source=referral&utm_medium=partner&utm_campaign=vue-partners',
+    hireUrl:
+      'https://rangle.io/contact-us/?utm_source=referral&utm_medium=partner&utm_campaign=vue-partners',
     email: 'info@rangle.io',
     socialLinks: [
       {

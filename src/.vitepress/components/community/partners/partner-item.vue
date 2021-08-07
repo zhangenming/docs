@@ -1,81 +1,19 @@
-<template>
-  <div class="partner">
-    <div class="logo">
-      <a :href="partner.urlLink">
-        <img :alt="`${partner.name}'s logo`" :src="logo" width="125" height="auto">
-      </a>
-    </div>
-    <div class="profile">
-      <p class="description">{{ partner.description }}</p>
-      <dl>
-        <dt>
-          <i class="fa fa-link"></i>
-          <span class="sr-only">Link</span>
-        </dt>
-        <dd>
-          <a :href="partner.urlLink">{{ partner.urlText }}</a>
-        </dd>
-
-        <dt>
-          <i class="fa fa-map-marker"></i>
-          <span class="sr-only">Location</span>
-        </dt>
-        <dd>{{ partner.location }}</dd>
-
-        <dt>
-          <i class="fa fa-globe"></i>
-          <span class="sr-only">Languages</span>
-        </dt>
-        <dd class="language-list">
-          <ul>
-            <li v-for="language in languages" :key="language">{{ language }}</li>
-          </ul>
-        </dd>
-
-        <dt title="Proficiencies">
-          <i class="fa fa-briefcase"></i>
-          <span class="sr-only">Proficiencies</span>
-        </dt>
-        <dd class="proficiency-list">
-          <ul>
-            <li v-for="proficiency in partner.proficiencies" :key="proficiency.name">
-              <a v-if="proficiency.url" :href="proficiency.url">
-                {{ proficiency.name }}
-              </a>
-              <template v-else>{{ proficiency.name }}</template>
-            </li>
-          </ul>
-        </dd>
-
-        <dd class="social">
-          <SocialIcon v-if="partner.email" type="Email" :link="mailHref"/>
-          <SocialIcon v-for="link in partner.socialLinks" :key="link.name" :type="link.name" :link="link.url"/>
-        </dd>
-      </dl>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
     partner: Object
   },
 
-  components: {
-    SocialIcon: () => import('@theme/components/ui/SocialIcon.vue')
-  },
-
   computed: {
-    languages () {
+    languages() {
       return [].concat(this.partner.languages)
     },
 
-    mailHref () {
+    mailHref() {
       return `mailto:${this.partner.email}?subject=Hire ${this.partner.name}`
     },
 
-    logo () {
+    logo() {
       if (/(https:\/\/|\/).*/.test(this.partner.logo)) {
         return this.partner.logo
       }
@@ -86,82 +24,113 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.partner {
+<template>
+  <div class="partner-item-wrapper">
+    <section class="partner-item">
+      <div class="column">
+        <div class="partner-item-logo">
+          <a :href="partner.urlLink">
+            <img
+              :alt="`${partner.name}'s logo`"
+              :src="logo"
+              width="125"
+              height="auto"
+            />
+          </a>
+        </div>
+        <dd class="social">
+          <p v-if="partner.email" type="Email" :link="mailHref">
+            {{ partner.email }}
+          </p>
+          <p
+            v-for="link in partner.socialLinks"
+            :key="link.name"
+            :type="link.name"
+            :link="link.url"
+          >
+            <a :href="link.url">{{ link.name }}</a>
+          </p>
+        </dd>
+      </div>
+      <div class="column">
+        <div class="profile">
+          <h3 class="partner-item-heading">About {{ partner.name }}</h3>
+          <p class="description">{{ partner.description }}</p>
+          <dt title="Proficiencies">
+            <i class="fa fa-briefcase"></i>
+            <h3 class="partner-item-heading">Proficiencies</h3>
+          </dt>
+          <dd class="proficiency-list">
+            <ul>
+              <li
+                v-for="proficiency in partner.proficiencies"
+                :key="proficiency.name"
+              >
+                <a v-if="proficiency.url" :href="proficiency.url">
+                  {{ proficiency.name }}
+                </a>
+                <template v-else>{{ proficiency.name }}</template>
+              </li>
+            </ul>
+          </dd>
+          <dl>
+            <dt>
+              <i class="fa fa-link"></i>
+              <span class="sr-only">Link</span>
+            </dt>
+            <dd>
+              <a :href="partner.urlLink">{{ partner.urlText }}</a>
+            </dd>
+            <dt>
+              <i class="fa fa-map-marker"></i>
+              <span class="sr-only">Location</span>
+            </dt>
+            <dd>{{ partner.location }}</dd>
+            <dt>
+              <i class="fa fa-globe"></i>
+              <span class="sr-only">Languages</span>
+            </dt>
+            <dd class="language-list">
+              <ul>
+                <li v-for="language in languages" :key="language">
+                  {{ language }}
+                </li>
+              </ul>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<style scoped>
+.partner-item {
+  max-width: 768px;
+  display: grid;
+  grid-template-columns: 192px 1fr;
+  grid-column-gap: 64px;
+}
+
+.partner-item-logo {
+  width: 192px;
+  height: 192px;
   display: flex;
-  padding: 25px 0;
-
-  &:first-of-type {
-    margin-top: 0.6em;
-  }
-
-  &+.partner {
-    border-top: 1px dotted #ddd;
-  }
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
 }
 
-.logo {
-  flex: 0 0 125px;
+.partner-item-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 64px 0;
+  background-color: #f8f8f8;
 }
 
-.profile {
-  padding: 0 26px;
-  flex: 1;
-
-  p {
-    margin-top: 0;
-  }
-
-  ul, li, dd, dt {
-    display: inline;
-    padding: 0;
-    margin: 0;
-    line-height: 1.3;
-  }
-
-  dl {
-    margin: 0.6em 0 0;
-  }
-
-  dt {
-    text-transform: uppercase;
-    font-size: 0.84em;
-    font-weight: 600;
-    min-width: 1.2em;
-    margin-right: 0.5em;
-    display: inline-block;
-  }
-
-  dd {
-    font-weight: 600;
-
-    &::after {
-      display: block;
-      content: '';
-      margin-top: 0.6em;
-    }
-  }
-
-  li+li::before {
-    display: inline-block;
-    content: '·';
-    margin: 0 0.4em;
-  }
-}
-
-dd.proficiency-list {
-  line-height: 1.6;
-}
-
-dd.social {
-  margin-top: 1.2em;
-  display: block;
-
-  a {
-    display: inline-block;
-    margin-right: 0.3em;
-    font-size: 1.3em;
-    text-decoration: none;
-  }
+.partner-item-heading {
+  margin-top: 0;
+  font-weight: bold;
 }
 </style>
